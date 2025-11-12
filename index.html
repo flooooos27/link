@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Zur App zurückkehren</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: sans-serif;
+      text-align: center;
+      padding: 40px;
+    }
+    button {
+      background-color: #007aff;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      padding: 12px 24px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h2>Weiter in der App</h2>
+  <p>Wenn sich die App nicht automatisch öffnet, klicke auf den Button:</p>
+  <button id="openApp">In der App öffnen</button>
+
+  <script>
+    
+    window.location.href = deeplink;
+
+    document.getElementById('openApp').addEventListener('click', () => {
+      window.location.href = quickly://tabs/home;
+    });
+  </script>
+</body>
+</html>
