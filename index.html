@@ -18,18 +18,40 @@
       padding: 12px 24px;
       font-size: 16px;
       cursor: pointer;
+      margin-top: 20px;
+    }
+    #counter {
+      font-size: 18px;
+      margin-top: 20px;
     }
   </style>
 </head>
 <body>
   <h2>Weiter in der App</h2>
-  <p>Wenn sich die App nicht automatisch öffnet, klicke auf den Button:</p>
+  <p>Die App wird automatisch in <span id="counter">10</span> Sekunden geöffnet.</p>
   <button id="openApp">In der App öffnen</button>
 
   <script>
-    document.getElementById('openApp').addEventListener('click', () => {
-      window.location.href = "quickly://kyc-complete";
-    });
+    const BUTTON = document.getElementById('openApp');
+    const COUNTER_EL = document.getElementById('counter');
+    const DEEPLINK = "quickly://kyc-complete"; //
+
+    let counter = 10;
+
+    const interval = setInterval(() => {
+      counter--;
+      COUNTER_EL.textContent = counter;
+      if(counter <= 0){
+        clearInterval(interval);
+        openApp();
+      }
+    }, 1000);
+
+    function openApp(){
+      window.location.href = DEEPLINK;
+    }
+
+    BUTTON.addEventListener('click', openApp);
   </script>
 </body>
 </html>
