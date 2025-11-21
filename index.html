@@ -49,7 +49,7 @@
 
     const BUTTON = document.getElementById('openApp');
     const COUNTER_EL = document.getElementById('counter');
-
+  let DEEPLINK = null;
   if (query === "/kyc-complete") {
     DEEPLINK = "quickly://kyc-complete";
   } else if (query === "/tabs/home") {
