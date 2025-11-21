@@ -2,7 +2,7 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8">
-  <title>Zur App zurückkehren</title>
+  <title>KYC Complete</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
@@ -10,6 +10,7 @@
       text-align: center;
       padding: 40px;
     }
+
     button {
       background-color: #007aff;
       color: white;
@@ -20,28 +21,43 @@
       cursor: pointer;
       margin-top: 20px;
     }
+
     #counter {
       font-size: 18px;
       margin-top: 20px;
     }
+
+    #kycCompletePage {
+      display: none;
+    }
   </style>
 </head>
-<body>
-  <h2>Weiter in der App</h2>
-  <p>Die App wird automatisch in <span id="counter">10</span> Sekunden geöffnet.</p>
-  <button id="openApp">In der App öffnen</button>
 
-  <script>
+<body>
+
+  <!-- KYC COMPLETE PAGE -->
+  <div id="kycCompletePage">
+    <h2>Weiter in der App</h2>
+    <p>Die App wird automatisch in <span id="counter">10</span> Sekunden geöffnet.</p>
+    <button id="openApp">In der App öffnen</button>
+  </div>
+
+<script>
+  const path = window.location.pathname;
+
+  if (path === "/kyc-complete") {
+    document.getElementById("kycCompletePage").style.display = "block";
+
     const BUTTON = document.getElementById('openApp');
     const COUNTER_EL = document.getElementById('counter');
-    const DEEPLINK = "quickly://kyc-complete"; //
+    const DEEPLINK = "app://kyc-complete";
 
     let counter = 10;
 
     const interval = setInterval(() => {
       counter--;
       COUNTER_EL.textContent = counter;
-      if(counter <= 0){
+      if (counter <= 0) {
         clearInterval(interval);
         openApp();
       }
@@ -52,6 +68,8 @@
     }
 
     BUTTON.addEventListener('click', openApp);
-  </script>
+  }
+</script>
+
 </body>
 </html>
