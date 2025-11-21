@@ -27,7 +27,7 @@
       margin-top: 20px;
     }
 
-    #kycCompletePage {
+    #kycPage {
       display: none;
     }
   </style>
@@ -35,8 +35,8 @@
 
 <body>
 
-  <div id="kycCompletePage">
-    <h2>Weiter in die App</h2>
+  <div id="kycPage">
+    <h2>Weiter in der App</h2>
     <p>Die App wird automatisch in <span id="counter">10</span> Sekunden geöffnet.</p>
     <button id="openApp">In der App öffnen</button>
   </div>
@@ -44,11 +44,9 @@
 <script>
   const query = window.location.search.replace("?", "").trim();
 
-  if (query === "/kyc-complete") {
+  if (query === "/kyc-complete" || query === "/tabs/home") {
+    document.getElementById("kycPage").style.display = "block";
 
-    document.getElementById("kycCompletePage").style.display = "block";
-
-    // ---- DEIN KYC CODE ----
     const BUTTON = document.getElementById('openApp');
     const COUNTER_EL = document.getElementById('counter');
     const DEEPLINK = "quickly://kyc-complete";
