@@ -49,7 +49,8 @@
 
     const BUTTON = document.getElementById('openApp');
     const COUNTER_EL = document.getElementById('counter');
-    const DEEPLINK = "quickly://kyc-complete";
+    const DEEPLINK_KYC = "quickly://kyc-complete";
+    const DEEPLINK_HOME = "quickly://tabs/home
 
     let counter = 10;
 
@@ -63,7 +64,11 @@
     }, 1000);
 
     function openApp(){
-      window.location.href = DEEPLINK;
+      if(query ===  "/kyc-complete") {
+      window.location.href = DEEPLINK_KYC;
+      } else if(query === "/tabs/home"){
+        window.location.href = DEEPLINK_HOME;
+      }
     }
 
     BUTTON.addEventListener('click', openApp);
