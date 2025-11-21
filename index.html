@@ -38,20 +38,17 @@
   <div id="kycCompletePage">
     <h2>Weiter in die App</h2>
     <p>Die App wird automatisch in <span id="counter">10</span> Sekunden geöffnet.</p>
-    <button id="openApp">Quickly öffnen</button>
+    <button id="openApp">In der App öffnen</button>
   </div>
 
 <script>
-  const pathname = window.location.pathname;
-  const query = window.location.search.replace("?", "");
+  const query = window.location.search.replace("?", "").trim();
 
-  const isKycRoute =
-      pathname === "/kyc-complete" ||
-      query === "/kyc-complete";
+  if (query === "/kyc-complete") {
 
-  if (isKycRoute) {
     document.getElementById("kycCompletePage").style.display = "block";
 
+    // ---- DEIN KYC CODE ----
     const BUTTON = document.getElementById('openApp');
     const COUNTER_EL = document.getElementById('counter');
     const DEEPLINK = "quickly://kyc-complete";
