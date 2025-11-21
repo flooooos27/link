@@ -2,7 +2,7 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8">
-  <title>KYC Complete</title>
+  <title>Quickly - Weiterleitung</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
@@ -35,17 +35,21 @@
 
 <body>
 
-  <!-- KYC COMPLETE PAGE -->
   <div id="kycCompletePage">
-    <h2>Weiter in der App</h2>
+    <h2>Weiter in die App</h2>
     <p>Die App wird automatisch in <span id="counter">10</span> Sekunden geöffnet.</p>
-    <button id="openApp">In der App öffnen</button>
+    <button id="openApp">Quickly öffnen</button>
   </div>
 
 <script>
-  const path = window.location.pathname;
+  const pathname = window.location.pathname;
+  const query = window.location.search.replace("?", "");
 
-  if (path === "/kyc-complete") {
+  const isKycRoute =
+      pathname === "/kyc-complete" ||
+      query === "/kyc-complete";
+
+  if (isKycRoute) {
     document.getElementById("kycCompletePage").style.display = "block";
 
     const BUTTON = document.getElementById('openApp');
@@ -57,7 +61,7 @@
     const interval = setInterval(() => {
       counter--;
       COUNTER_EL.textContent = counter;
-      if (counter <= 0) {
+      if(counter <= 0){
         clearInterval(interval);
         openApp();
       }
