@@ -51,12 +51,11 @@
     const COUNTER_EL = document.getElementById('counter');
   let DEEPLINK = null;
   if (query === "/kyc-complete") {
-    DEEPLINK = "quickly://kyc-complete";
+      DEEPLINK = "quickly://payment-complete?type=offer&offerId=f64c5018-ff3a-4b91-9707-f48f710d91bb";
+   // DEEPLINK = "quickly://kyc-complete";
   } else if (query === "/tabs/home") {
     DEEPLINK = "quickly://tabs/home";
-  } else if(query === "/test") {
-    DEEPLINK = "quickly://payment-complete?type=offer&offerId=f64c5018-ff3a-4b91-9707-f48f710d91bb";
-  }
+  } 
 
     let counter = 10;
 
